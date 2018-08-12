@@ -49,6 +49,7 @@ public class MenuController extends BaseController
 	@ResponseBody
 	public TableDataInfo list(Menu menu)
 	{
+
 		startPage();
         List<Menu> list = menuService.selectMenuList(menu);
 		return getDataTable(list);

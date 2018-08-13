@@ -1,6 +1,8 @@
 package zjnu.cmf.project.controller;
 
 import java.util.List;
+import java.util.Map;
+
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -49,7 +51,6 @@ public class MenuController extends BaseController
 	@ResponseBody
 	public TableDataInfo list(Menu menu)
 	{
-
 		startPage();
         List<Menu> list = menuService.selectMenuList(menu);
 		return getDataTable(list);
@@ -80,7 +81,7 @@ public class MenuController extends BaseController
 	 * 修改菜单权限
 	 */
 	@GetMapping("/edit/{menuId}")
-	public String edit(@PathVariable("menuId") Integer menuId, ModelMap mmap)
+	public String edit(@PathVariable("menuId") Long menuId, ModelMap mmap)
 	{
 		Menu menu = menuService.selectMenuById(menuId);
 		mmap.put("menu", menu);
@@ -110,5 +111,24 @@ public class MenuController extends BaseController
 	{		
 		return toAjax(menuService.deleteMenuByIds(ids));
 	}
-	
+
+	/**
+	 * 选择菜单图标
+	 */
+	@GetMapping("/icon")
+	public String icon(){
+		return prefix + "/icon";
+	}
+
+
+	/**
+	 * 选择菜单树
+	 */
+	@GetMapping("/selectMenuTree/{menuId}")
+	public String selectMenuTree(@PathVariable("menuId") Long menuId, ModelMap mmap)
+	{
+		mmap.put("treeName", menuService.selectMenuById(menuId).getMenuName());
+		return prefix + "/tree";
+	}
 }
+

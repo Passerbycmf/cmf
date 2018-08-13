@@ -19,7 +19,7 @@ public interface IMenuService
      * @param menuId 菜单权限ID
      * @return 菜单权限信息
      */
-	public Menu selectMenuById(Integer menuId);
+	public Menu selectMenuById(Long menuId);
 	
 	/**
      * 查询菜单权限列表

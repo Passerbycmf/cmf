@@ -28,12 +28,13 @@ public class MenuServiceImpl implements IMenuService
      * @param menuId 菜单权限ID
      * @return 菜单权限信息
      */
-    @Override
-	public Menu selectMenuById(Integer menuId)
-	{
-	    return menuMapper.selectMenuById(menuId);
+
+
+	@Override
+	public Menu selectMenuById(Long menuId) {
+		return null;
 	}
-	
+
 	/**
      * 查询菜单权限列表
      * 

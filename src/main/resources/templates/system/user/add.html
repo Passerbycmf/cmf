@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="white-bg">
+    <div class="wrapper wrapper-content animated fadeInRight ibox-content">
+        <form class="form-horizontal m" id="form-user-add">
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">部门ID：</label>
+				<div class="col-sm-8">
+					<input id="deptId" name="deptId" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">登录账号：</label>
+				<div class="col-sm-8">
+					<input id="loginName" name="loginName" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">用户昵称：</label>
+				<div class="col-sm-8">
+					<input id="userName" name="userName" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">用户类型（00系统用户）：</label>
+				<div class="col-sm-8">
+					<input id="userType" name="userType" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">用户邮箱：</label>
+				<div class="col-sm-8">
+					<input id="email" name="email" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">手机号码：</label>
+				<div class="col-sm-8">
+					<input id="phonenumber" name="phonenumber" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">用户性别（0男 1女 2未知）：</label>
+				<div class="col-sm-8">
+					<input id="sex" name="sex" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">头像路径：</label>
+				<div class="col-sm-8">
+					<input id="avatar" name="avatar" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">密码：</label>
+				<div class="col-sm-8">
+					<input id="password" name="password" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">盐加密：</label>
+				<div class="col-sm-8">
+					<input id="salt" name="salt" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">帐号状态（0正常 1停用）：</label>
+				<div class="col-sm-8">
+					<input id="status" name="status" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">删除标志（0代表存在 2代表删除）：</label>
+				<div class="col-sm-8">
+					<input id="delFlag" name="delFlag" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">最后登陆IP：</label>
+				<div class="col-sm-8">
+					<input id="loginIp" name="loginIp" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">最后登陆时间：</label>
+				<div class="col-sm-8">
+					<input id="loginDate" name="loginDate" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">创建者：</label>
+				<div class="col-sm-8">
+					<input id="createBy" name="createBy" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">创建时间：</label>
+				<div class="col-sm-8">
+					<input id="createTime" name="createTime" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">更新者：</label>
+				<div class="col-sm-8">
+					<input id="updateBy" name="updateBy" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">更新时间：</label>
+				<div class="col-sm-8">
+					<input id="updateTime" name="updateTime" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">备注：</label>
+				<div class="col-sm-8">
+					<input id="remark" name="remark" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="form-control-static col-sm-offset-9">
+					<button type="submit" class="btn btn-primary">提交</button>
+					<button onclick="$.modal.close()" class="btn btn-danger" type="button">关闭</button>
+				</div>
+			</div>
+		</form>
+	</div>
+    <div th:include="include::footer"></div>
+    <script type="text/javascript">
+		var prefix = ctx + "system/user"
+		$("#form-user-add").validate({
+			rules:{
+				xxxx:{
+					required:true,
+				},
+			},
+			submitHandler: function(form) {
+				$.operate.save(prefix + "/add", $('#form-user-add').serialize());
+			}
+		});
+	</script>
+</body>
+</html>

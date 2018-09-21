@@ -13,9 +13,9 @@
 							部门名称：<input type="text" name="deptName"/>
 						</li>
 						<li>
-							部门状态：<select name="status" >
-							<option value="">所有</option>
-
+							部门状态：<select name="status"  >
+							<!--<option th:selected="{}">所有</option>-->
+							<!--<option th:each="statusList : ${status}" th:value="${statusList}" th:text="${statusList}"></option>-->
 						</select>
 						</li>
 						<li>
@@ -64,7 +64,8 @@
 				{
 					field : 'status',
 					title : '部门状态（0正常 1停用）',
-                    align: "center"
+                    align: "center",
+
 				},
 				{
 					field : 'createTime',

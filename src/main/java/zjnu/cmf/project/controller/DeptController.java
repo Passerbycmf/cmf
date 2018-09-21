@@ -46,8 +46,9 @@ public class DeptController extends BaseController
 	
 	@RequiresPermissions("system:dept:view")
 	@GetMapping()
-	public String dept()
+	public String dept(ModelMap modelMap)
 	{
+
 	    return prefix + "/dept";
 	}
 	
@@ -65,6 +66,7 @@ public class DeptController extends BaseController
 		List<Dept> deptList = deptService.selectDeptList(dept);
 		return deptList;
 	}
+
 	
 	/**
 	 * 新增部门

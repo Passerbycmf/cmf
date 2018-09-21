@@ -55,7 +55,8 @@ public class DeptServiceImpl implements IDeptService
 	@Override
 	public int insertDept(Dept dept)
 	{
-	    return deptMapper.insertDept(dept);
+	    //还需要创建者
+		return deptMapper.insertDept(dept);
 	}
 	
 	/**
@@ -67,7 +68,8 @@ public class DeptServiceImpl implements IDeptService
 	@Override
 	public int updateDept(Dept dept)
 	{
-	    return deptMapper.updateDept(dept);
+	    //还需要更新修改者
+		return deptMapper.updateDept(dept);
 	}
 
 
@@ -112,9 +114,9 @@ public class DeptServiceImpl implements IDeptService
 	 */
 	@Override
 	public String checkDeptNameUnique(Dept dept) {
-
+		Long deptId = StringUtils.isNull(dept.getDeptId()) ? -1L : dept.getDeptId();
 		Dept info = deptMapper.checkDeptNameUnique(dept.getDeptName());
-		if(StringUtils.isNotNull(info)){
+		if(StringUtils.isNotNull(info) && info.getDeptId().longValue() != deptId.longValue()){
 			return UserConstants.DEPT_NAME_NOT_UNIQUE;
 		}
 		return UserConstants.DEPT_NAME_UNIQUE;

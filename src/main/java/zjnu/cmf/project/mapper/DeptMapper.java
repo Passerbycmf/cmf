@@ -89,4 +89,6 @@ public interface DeptMapper
 	 * @return
 	 */
 	Dept checkDeptNameUnique(String deptName);
+
+
 }

@@ -40,6 +40,8 @@ public class Dept extends BaseEntity
 	private String updateBy;
 	/** 更新时间 */
 	private Date updateTime;
+	/**上级部门名称*/
+	private String parentName;
 
 	public void setDeptId(Integer deptId) 
 	{
@@ -150,7 +152,15 @@ public class Dept extends BaseEntity
 		return updateTime;
 	}
 
-    public String toString() {
+	public String getParentName() {
+		return parentName;
+	}
+
+	public void setParentName(String parentName) {
+		this.parentName = parentName;
+	}
+
+	public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
             .append("deptId", getDeptId())
             .append("parentId", getParentId())
@@ -164,6 +174,7 @@ public class Dept extends BaseEntity
             .append("createTime", getCreateTime())
             .append("updateBy", getUpdateBy())
             .append("updateTime", getUpdateTime())
+			.append("parentName", getParentName())
             .toString();
     }
 }

@@ -17,6 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="createTime"    column="create_time"    />
         <result property="updateBy"    column="update_by"    />
         <result property="updateTime"    column="update_time"    />
+        <result property="parentName"   column="parent_name"/>
     </resultMap>
 	
 	<sql id="selectDeptVo">
@@ -47,8 +48,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
     
     <select id="selectDeptById" parameterType="Integer" resultMap="DeptResult">
-        <include refid="selectDeptVo"/>
-        where dept_id = #{deptId}
+        select t.dept_id, t.parent_id, t.dept_name, t.order_num, t.leader, t.phone, t.email, t.status,
+			(select dept_name from sys_dept where dept_id = t.parent_id) parent_name
+		from sys_dept t
+		where dept_id = #{deptId}
     </select>
 
     <select id="checkDeptNameUnique" parameterType="string" resultMap="DeptResult">
@@ -68,9 +71,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="email != null and email != '' ">email,</if>
 			<if test="status != null and status != '' ">status,</if>
 			<if test="createBy != null and createBy != '' ">create_by,</if>
-			<if test="createTime != null and createTime != '' ">create_time,</if>
-			<if test="updateBy != null and updateBy != '' ">update_by,</if>
-			<if test="updateTime != null and updateTime != '' ">update_time,</if>
+            create_time
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
 			<if test="deptId != null and deptId != ''">#{deptId},</if>
@@ -82,9 +83,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="email != null and email != ''">#{email},</if>
 			<if test="status != null and status != ''">#{status},</if>
 			<if test="createBy != null and createBy != ''">#{createBy},</if>
-			<if test="createTime != null and createTime != ''">#{createTime},</if>
-			<if test="updateBy != null and updateBy != ''">#{updateBy},</if>
-			<if test="updateTime != null and updateTime != ''">#{updateTime},</if>
+            sysdate()
          </trim>
     </insert>
 	 
@@ -101,7 +100,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="createBy != null  and createBy != ''  ">create_by = #{createBy},</if>
             <if test="createTime != null  ">create_time = #{createTime},</if>
             <if test="updateBy != null  and updateBy != ''  ">update_by = #{updateBy},</if>
-            <if test="updateTime != null  ">update_time = #{updateTime},</if>
+            update_time = sysdate()
         </trim>
         where dept_id = #{deptId}
     </update>
@@ -116,17 +115,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             #{deptId}
         </foreach>
     </delete>
-    <select id="selectDeptCount" parameterType="Dept" resultType="int">
+    <select id="selectDeptCount" parameterType="Dept" resultType="java.lang.Integer">
         select count(*) from sys_dept
         <where>
             <if test="deptId != null and deptId != 0 "> and dept_id = #{deptId}</if>
             <if test="parentId != null and deptId != 0 "> and parent_id = #{parentId}</if>
         </where>
     </select>
-    <select id="checkDeptExistUser" parameterType="Dept" resultType="int" >
-        select count(*) from sys_dept
-        <where>
-            <if test="deptId != null and deptId != 0 "> and dept_id = #{deptId}</if>
-        </where>
+    <select id="checkDeptExistUser" parameterType="Dept" resultType="java.lang.Integer" >
+       select count(*) from sys_user where dept_id = #{deptId} and del_flag = '0'
     </select>
+
 </mapper>

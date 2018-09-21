@@ -64,6 +64,9 @@ public class UserConstants
     public final static String DICT_TYPE_UNIQUE = "0";
     public final static String DICT_TYPE_NOT_UNIQUE = "1";
 
+    /**字典名称是否唯一返回结果码*/
+    public final  static String DICT_NAME_UNIQUE = "0";
+    public final static String DICT_NAME_NOT_UNIQUE ="1";
     /** 参数键名是否唯一的返回结果码 */
     public final static String CONFIG_KEY_UNIQUE = "0";
     public final static String CONFIG_KEY_NOT_UNIQUE = "1";

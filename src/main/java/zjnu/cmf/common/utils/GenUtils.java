@@ -112,15 +112,15 @@ public class GenUtils
     /**
      * 获取文件名
      */
-    public static String getFileName(String template, TableInfo table)
+    public static String getFileName(String template, TableInfo table,String moduleName)
     {
         // 小写类名
         String classname = table.getClassname();
         // 大写类名
         String className = table.getClassName();
-        String javaPath = PROJECT_PATH + "/"  ;
-        String mybatisPath = MYBATIS_PATH + "/"  + className;
-        String htmlPath = TEMPLATES_PATH + "/"  + classname;
+        String javaPath = PROJECT_PATH + "/";
+        String mybatisPath = MYBATIS_PATH + "/" + moduleName + "/" + className;
+        String htmlPath = TEMPLATES_PATH + "/" + moduleName + "/" + classname;
 
         if (StringUtils.isNotEmpty(classname))
         {

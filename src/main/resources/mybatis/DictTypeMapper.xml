@@ -57,6 +57,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where dict_name = #{dictName}
     </select>
 
+    <select id="selectDictTypeAll" resultMap="DictTypeResult">
+        <include refid="selectDictTypeVo"/>
+    </select>
+
     <insert id="insertDictType" parameterType="DictType">
         insert into sys_dict_type
 		<trim prefix="(" suffix=")" suffixOverrides=",">

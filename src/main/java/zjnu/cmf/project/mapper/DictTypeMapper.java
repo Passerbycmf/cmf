@@ -75,5 +75,9 @@ public interface DictTypeMapper
 	 */
 	DictType checkDictNameUnique(String dictName);
 
-
+	/**
+	 * 根据所有字典类型
+	 * @return
+	 */
+    List<DictType> selectDictTypeAll();
 }

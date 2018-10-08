@@ -35,7 +35,7 @@ public class DictTypeController extends BaseController
 {
     private String prefix = "system/dict/type";
 
-    private String dataPrefix = "system/dict/data";
+
 	
 	@Autowired
 	private IDictTypeService dictTypeService;
@@ -179,10 +179,12 @@ public class DictTypeController extends BaseController
 	 * @param
 	 * @return
 	 */
-	@PostMapping("/dictDataDetail/dictId")
-	public String dictDataDetail(@PathVariable("dictId") Integer dictId){
-
-		 return dataPrefix + "/dictData" ;
+	@GetMapping("/dictDataDetail/{dictId}")
+	public String dictDataDetail(@PathVariable("dictId") Integer dictId, ModelMap map)
+	{
+		map.put("dict", dictTypeService.selectDictTypeById(dictId));
+		map.put("dictList", dictTypeService.selectDictTypeAll());
+		return "system/dict/data/dataData";
 	}
 
 

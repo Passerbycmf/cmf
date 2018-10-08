@@ -18,7 +18,7 @@ import java.util.List;
 public class GenUtils
 {
     /** 项目空间路径 */
-    private static final String PROJECT_PATH = "main/java/zjnu/manage/project";
+    private static final String PROJECT_PATH = "main/java/zjnu/cmf/project";
 
     /** mybatis空间路径 */
     private static final String MYBATIS_PATH = "main/resources/mybatis";
@@ -64,9 +64,9 @@ public class GenUtils
         velocityContext.put("primaryKey", table.getPrimaryKey());
         velocityContext.put("className", table.getClassName());
         velocityContext.put("classname", table.getClassname());
-        velocityContext.put("moduleName", GenUtils.getModuleName(packageName));
+        //velocityContext.put("moduleName", GenUtils.getModuleName(packageName));
         velocityContext.put("columns", table.getColumns());
-        velocityContext.put("package", packageName + "." + table.getClassname());
+        velocityContext.put("package", packageName );
         velocityContext.put("author", GenConfig.getAuthor());
         velocityContext.put("datetime", DateUtils.getDate());
         return velocityContext;
@@ -80,7 +80,7 @@ public class GenUtils
     public static List<String> getTemplates()
     {
         List<String> templates = new ArrayList<String>();
-        templates.add("templates/vm/java/domain.java.vm");
+        templates.add("templates/vm/java/bean.java.vm");
         templates.add("templates/vm/java/Mapper.java.vm");
         templates.add("templates/vm/java/Service.java.vm");
         templates.add("templates/vm/java/ServiceImpl.java.vm");
@@ -112,24 +112,24 @@ public class GenUtils
     /**
      * 获取文件名
      */
-    public static String getFileName(String template, TableInfo table, String moduleName)
+    public static String getFileName(String template, TableInfo table)
     {
         // 小写类名
         String classname = table.getClassname();
         // 大写类名
         String className = table.getClassName();
-        String javaPath = PROJECT_PATH + "/" + moduleName + "/";
-        String mybatisPath = MYBATIS_PATH + "/" + moduleName + "/" + className;
-        String htmlPath = TEMPLATES_PATH + "/" + moduleName + "/" + classname;
+        String javaPath = PROJECT_PATH + "/"  ;
+        String mybatisPath = MYBATIS_PATH + "/"  + className;
+        String htmlPath = TEMPLATES_PATH + "/"  + classname;
 
         if (StringUtils.isNotEmpty(classname))
         {
             javaPath += classname.replace(".", "/") + "/";
         }
 
-        if (template.contains("domain.java.vm"))
+        if (template.contains("bean.java.vm"))
         {
-            return javaPath + "domain" + "/" + className + ".java";
+            return javaPath + "bean" + "/" + className + ".java";
         }
 
         if (template.contains("Mapper.java.vm"))
@@ -179,16 +179,16 @@ public class GenUtils
     /**
      * 获取模块名
      * 
-     * @param packageName 包名
+     * @param
      * @return 模块名
      */
-    public static String getModuleName(String packageName)
+   /* public static String getModuleName(String packageName)
     {
         int lastIndex = packageName.lastIndexOf(".");
         int nameLength = packageName.length();
         String moduleName = StringUtils.substring(packageName, lastIndex + 1, nameLength);
         return moduleName;
-    }
+    }*/
 
     public static String replaceKeyword(String keyword)
     {
@@ -200,6 +200,6 @@ public class GenUtils
     {
         System.out.println(StringUtils.convertToCamelCase("user_name"));
         System.out.println(replaceKeyword("岗位信息表"));
-        System.out.println(getModuleName("com.ruoyi.project.system"));
+       // System.out.println(getModuleName("com.cmf.project.system"));
     }
 }

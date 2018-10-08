@@ -26,6 +26,7 @@ public class UserRealm extends AuthorizingRealm {
   private IMenuService menuService;
 
 
+
     /**
      * 授权
      * @param principals

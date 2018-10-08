@@ -64,4 +64,6 @@ public interface IDictTypeService
 	 * @return
 	 */
 	String checkDictNameUnique(DictType dict);
+
+	List<DictType> selectDictTypeAll();
 }

@@ -111,7 +111,7 @@ public class GenServiceImpl implements IGenService
         VelocityInitializer.initVelocity();
 
         String packageName = GenConfig.getPackageName();
-        String moduleName = GenUtils.getModuleName(packageName);
+        //String moduleName = GenUtils.getModuleName(packageName);
 
         VelocityContext context = GenUtils.getVelocityContext(table);
 
@@ -126,7 +126,7 @@ public class GenServiceImpl implements IGenService
             try
             {
                 // 添加到zip
-                zip.putNextEntry(new ZipEntry(GenUtils.getFileName(template, table, moduleName)));
+                zip.putNextEntry(new ZipEntry(GenUtils.getFileName(template, table)));
                 IOUtils.write(sw.toString(), zip, Constants.UTF8);
                 IOUtils.closeQuietly(sw);
                 zip.closeEntry();

@@ -135,6 +135,15 @@ public class DictTypeServiceImpl implements IDictTypeService
 		return UserConstants.DICT_NAME_UNIQUE;
 	}
 
+	/**
+	 *根据所有字典类型
+	 * @return
+	 */
+	@Override
+	public List<DictType> selectDictTypeAll()
+	{
+		return dictTypeMapper.selectDictTypeAll();
+	}
 
 
 }

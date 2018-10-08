@@ -25,15 +25,15 @@ import zjnu.cmf.framework.web.BaseController;
  * @date 2018-10-08
  */
 @Controller
-@RequestMapping("/${moduleName}/role")
+@RequestMapping("/role")
 public class RoleController extends BaseController
 {
-    private String prefix = "${moduleName}/role";
+    private String prefix = "role";
 	
 	@Autowired
 	private IRoleService roleService;
 	
-	@RequiresPermissions("${moduleName}:role:view")
+	@RequiresPermissions("role:view")
 	@GetMapping()
 	public String role()
 	{
@@ -43,7 +43,7 @@ public class RoleController extends BaseController
 	/**
 	 * 查询角色列表
 	 */
-	@RequiresPermissions("${moduleName}:role:list")
+	@RequiresPermissions("role:list")
 	@PostMapping("/list")
 	@ResponseBody
 	public TableDataInfo list(Role role)
@@ -65,7 +65,7 @@ public class RoleController extends BaseController
 	/**
 	 * 新增保存角色
 	 */
-	@RequiresPermissions("${moduleName}:role:add")
+	@RequiresPermissions("role:add")
 	@Log(title = "角色", action = BusinessType.INSERT)
 	@PostMapping("/add")
 	@ResponseBody
@@ -88,7 +88,7 @@ public class RoleController extends BaseController
 	/**
 	 * 修改保存角色
 	 */
-	@RequiresPermissions("${moduleName}:role:edit")
+	@RequiresPermissions("role:edit")
 	@Log(title = "角色", action = BusinessType.UPDATE)
 	@PostMapping("/edit")
 	@ResponseBody
@@ -100,7 +100,7 @@ public class RoleController extends BaseController
 	/**
 	 * 删除角色
 	 */
-	@RequiresPermissions("${moduleName}:role:remove")
+	@RequiresPermissions("role:remove")
 	@Log(title = "角色", action = BusinessType.DELETE)
 	@PostMapping( "/remove")
 	@ResponseBody

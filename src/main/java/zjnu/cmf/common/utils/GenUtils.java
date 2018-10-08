@@ -64,7 +64,7 @@ public class GenUtils
         velocityContext.put("primaryKey", table.getPrimaryKey());
         velocityContext.put("className", table.getClassName());
         velocityContext.put("classname", table.getClassname());
-        //velocityContext.put("moduleName", GenUtils.getModuleName(packageName));
+        velocityContext.put("moduleName", GenUtils.getModuleName(packageName));
         velocityContext.put("columns", table.getColumns());
         velocityContext.put("package", packageName );
         velocityContext.put("author", GenConfig.getAuthor());
@@ -182,13 +182,13 @@ public class GenUtils
      * @param
      * @return 模块名
      */
-   /* public static String getModuleName(String packageName)
+    public static String getModuleName(String packageName)
     {
         int lastIndex = packageName.lastIndexOf(".");
         int nameLength = packageName.length();
         String moduleName = StringUtils.substring(packageName, lastIndex + 1, nameLength);
         return moduleName;
-    }*/
+    }
 
     public static String replaceKeyword(String keyword)
     {

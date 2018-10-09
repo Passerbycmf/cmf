@@ -4,8 +4,8 @@ import org.apache.velocity.VelocityContext;
 import zjnu.cmf.common.constant.CommonMap;
 import zjnu.cmf.common.constant.Constants;
 import zjnu.cmf.framework.config.GenConfig;
-import zjnu.cmf.project.bean.ColumnInfo;
-import zjnu.cmf.project.bean.TableInfo;
+import zjnu.cmf.system.bean.ColumnInfo;
+import zjnu.cmf.system.bean.TableInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ import java.util.List;
 public class GenUtils
 {
     /** 项目空间路径 */
-    private static final String PROJECT_PATH = "main/java/zjnu/cmf/project";
+    private static final String PROJECT_PATH = "main/java/zjnu/cmf/system";
 
     /** mybatis空间路径 */
     private static final String MYBATIS_PATH = "main/resources/mybatis";
@@ -200,6 +200,6 @@ public class GenUtils
     {
         System.out.println(StringUtils.convertToCamelCase("user_name"));
         System.out.println(replaceKeyword("岗位信息表"));
-       // System.out.println(getModuleName("com.cmf.project.system"));
+       // System.out.println(getModuleName("com.cmf.system.system"));
     }
 }

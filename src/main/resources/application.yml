@@ -7,7 +7,7 @@ cmf:
   #mybatis
 mybatis:
   # 搜索指定包名
-   typeAliasesPackage: zjnu.cmf.project
+   typeAliasesPackage: zjnu.cmf.system
    # 配置mapper的扫描，找到所有的mapper.xml映射文件
    mapperLocations: classpath:mybatis/**/*Mapper.xml
    # 加载全局的配置文件
@@ -93,7 +93,7 @@ gen:
   # 作者
   author: cmf
   # 默认生成包路径 module 需改成自己的模块名称 如 system monitor tool
-  packageName: zjnu.cmf.project
+  packageName: zjnu.cmf.system
   # 自动去除表前缀，默认是true
   autoRemovePre: true
   # 表前缀(类名不会包含表前缀)

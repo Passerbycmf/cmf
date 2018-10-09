@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
 @EnableTransactionManagement
-@MapperScan("zjnu.cmf.project.mapper")
+@MapperScan("zjnu.cmf.system.mapper")
 public class CmfApplication {
 
     public static void main(String[] args) {

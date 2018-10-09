@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="white-bg">
+    <div class="wrapper wrapper-content animated fadeInRight ibox-content">
+        <form class="form-horizontal m" id="form-operLog-add">
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">模块标题：</label>
+				<div class="col-sm-8">
+					<input id="title" name="title" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">功能请求：</label>
+				<div class="col-sm-8">
+					<input id="action" name="action" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">方法名称：</label>
+				<div class="col-sm-8">
+					<input id="method" name="method" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">来源渠道（manage后台用户 mobile手机端用户 other其它）：</label>
+				<div class="col-sm-8">
+					<input id="channel" name="channel" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">操作人员：</label>
+				<div class="col-sm-8">
+					<input id="operName" name="operName" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">部门名称：</label>
+				<div class="col-sm-8">
+					<input id="deptName" name="deptName" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">请求URL：</label>
+				<div class="col-sm-8">
+					<input id="operUrl" name="operUrl" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">主机地址：</label>
+				<div class="col-sm-8">
+					<input id="operIp" name="operIp" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">操作地点：</label>
+				<div class="col-sm-8">
+					<input id="operLocation" name="operLocation" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">请求参数：</label>
+				<div class="col-sm-8">
+					<input id="operParam" name="operParam" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">操作状态（0正常 1异常）：</label>
+				<div class="col-sm-8">
+					<input id="status" name="status" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">错误消息：</label>
+				<div class="col-sm-8">
+					<input id="errorMsg" name="errorMsg" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">操作时间：</label>
+				<div class="col-sm-8">
+					<input id="operTime" name="operTime" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="form-control-static col-sm-offset-9">
+					<button type="submit" class="btn btn-primary">提交</button>
+					<button onclick="$.modal.close()" class="btn btn-danger" type="button">关闭</button>
+				</div>
+			</div>
+		</form>
+	</div>
+    <div th:include="include::footer"></div>
+    <script type="text/javascript">
+		var prefix = ctx + "monitor/operLog"
+		$("#form-operLog-add").validate({
+			rules:{
+				xxxx:{
+					required:true,
+				},
+			},
+			submitHandler: function(form) {
+				$.operate.save(prefix + "/add", $('#form-operLog-add').serialize());
+			}
+		});
+	</script>
+</body>
+</html>

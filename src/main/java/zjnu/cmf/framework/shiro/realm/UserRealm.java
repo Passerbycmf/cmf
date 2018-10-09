@@ -9,7 +9,7 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import zjnu.cmf.system.service.IMenuService;
+import zjnu.cmf.project.system.service.IMenuService;
 
 
 /**

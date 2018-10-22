@@ -2,6 +2,7 @@ package zjnu.cmf.project.monitor.bean;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+import zjnu.cmf.framework.aspectj.lang.annotation.Excel;
 import zjnu.cmf.framework.web.BaseEntity;
 import java.util.Date;
 
@@ -14,179 +15,210 @@ import java.util.Date;
 public class OperLog extends BaseEntity
 {
 	private static final long serialVersionUID = 1L;
-	
+
 	/** 日志主键 */
+	@Excel(name = "操作序号")
 	private Integer operId;
-	/** 模块标题 */
+
+	/** 操作模块 */
+	@Excel(name = "操作模块")
 	private String title;
-	/** 功能请求 */
+
+	/** 操作类型 */
+	@Excel(name = "操作类型")
 	private String action;
-	/** 方法名称 */
+
+	/** 请求方法 */
+	@Excel(name = "请求方法")
 	private String method;
-	/** 来源渠道（manage后台用户 mobile手机端用户 other其它） */
+
+	/** 来源渠道 */
+	@Excel(name = "来源渠道")
 	private String channel;
+
 	/** 操作人员 */
+	@Excel(name = "操作人员")
 	private String operName;
+
 	/** 部门名称 */
+	@Excel(name = "部门名称")
 	private String deptName;
-	/** 请求URL */
+
+	/** 请求url */
+	@Excel(name = "请求地址")
 	private String operUrl;
-	/** 主机地址 */
+
+	/** 操作地址 */
+	@Excel(name = "操作地址")
 	private String operIp;
+
 	/** 操作地点 */
+	@Excel(name = "操作地点")
 	private String operLocation;
+
 	/** 请求参数 */
+	@Excel(name = "请求参数")
 	private String operParam;
-	/** 操作状态（0正常 1异常） */
+
+	/** 状态0正常 1异常 */
+	@Excel(name = "状态")
 	private String status;
+
 	/** 错误消息 */
+	@Excel(name = "错误消息")
 	private String errorMsg;
+
 	/** 操作时间 */
+	@Excel(name = "操作时间")
 	private Date operTime;
 
-	public void setOperId(Integer operId) 
+	public Integer getOperId()
+	{
+		return operId;
+	}
+
+	public void setOperId(Integer operId)
 	{
 		this.operId = operId;
 	}
 
-	public Integer getOperId() 
+	public String getTitle()
 	{
-		return operId;
+		return title;
 	}
-	public void setTitle(String title) 
+
+	public void setTitle(String title)
 	{
 		this.title = title;
 	}
 
-	public String getTitle() 
+	public String getAction()
 	{
-		return title;
+		return action;
 	}
-	public void setAction(String action) 
+
+	public void setAction(String action)
 	{
 		this.action = action;
 	}
 
-	public String getAction() 
+	public String getMethod()
 	{
-		return action;
+		return method;
 	}
-	public void setMethod(String method) 
+
+	public void setMethod(String method)
 	{
 		this.method = method;
 	}
 
-	public String getMethod() 
+	public String getChannel()
 	{
-		return method;
+		return channel;
 	}
-	public void setChannel(String channel) 
+
+	public void setChannel(String channel)
 	{
 		this.channel = channel;
 	}
 
-	public String getChannel() 
+	public String getOperName()
 	{
-		return channel;
+		return operName;
 	}
-	public void setOperName(String operName) 
+
+	public void setOperName(String operName)
 	{
 		this.operName = operName;
 	}
 
-	public String getOperName() 
+	public String getDeptName()
 	{
-		return operName;
+		return deptName;
 	}
-	public void setDeptName(String deptName) 
+
+	public void setDeptName(String deptName)
 	{
 		this.deptName = deptName;
 	}
 
-	public String getDeptName() 
+	public String getOperUrl()
 	{
-		return deptName;
+		return operUrl;
 	}
-	public void setOperUrl(String operUrl) 
+
+	public void setOperUrl(String operUrl)
 	{
 		this.operUrl = operUrl;
 	}
 
-	public String getOperUrl() 
+	public String getOperIp()
 	{
-		return operUrl;
+		return operIp;
 	}
-	public void setOperIp(String operIp) 
+
+	public void setOperIp(String operIp)
 	{
 		this.operIp = operIp;
 	}
 
-	public String getOperIp() 
+	public String getOperLocation()
 	{
-		return operIp;
+		return operLocation;
 	}
-	public void setOperLocation(String operLocation) 
+
+	public void setOperLocation(String operLocation)
 	{
 		this.operLocation = operLocation;
 	}
 
-	public String getOperLocation() 
+	public String getOperParam()
 	{
-		return operLocation;
+		return operParam;
 	}
-	public void setOperParam(String operParam) 
+
+	public void setOperParam(String operParam)
 	{
 		this.operParam = operParam;
 	}
 
-	public String getOperParam() 
+	public String getStatus()
 	{
-		return operParam;
+		return status;
 	}
-	public void setStatus(String status) 
+
+	public void setStatus(String status)
 	{
 		this.status = status;
 	}
 
-	public String getStatus() 
+	public String getErrorMsg()
 	{
-		return status;
+		return errorMsg;
 	}
-	public void setErrorMsg(String errorMsg) 
+
+	public void setErrorMsg(String errorMsg)
 	{
 		this.errorMsg = errorMsg;
 	}
 
-	public String getErrorMsg() 
-	{
-		return errorMsg;
-	}
-	public void setOperTime(Date operTime) 
-	{
-		this.operTime = operTime;
-	}
-
-	public Date getOperTime() 
+	public Date getOperTime()
 	{
 		return operTime;
 	}
 
-    public String toString() {
-        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("operId", getOperId())
-            .append("title", getTitle())
-            .append("action", getAction())
-            .append("method", getMethod())
-            .append("channel", getChannel())
-            .append("operName", getOperName())
-            .append("deptName", getDeptName())
-            .append("operUrl", getOperUrl())
-            .append("operIp", getOperIp())
-            .append("operLocation", getOperLocation())
-            .append("operParam", getOperParam())
-            .append("status", getStatus())
-            .append("errorMsg", getErrorMsg())
-            .append("operTime", getOperTime())
-            .toString();
-    }
+	public void setOperTime(Date operTime)
+	{
+		this.operTime = operTime;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "OperLog [operId=" + operId + ", title=" + title + ", action=" + action + ", method=" + method
+				+ ", channel=" + channel + ", operName=" + operName + ", deptName=" + deptName + ", operUrl=" + operUrl
+				+ ", operIp=" + operIp + ", operLocation=" + operLocation + ", operParam=" + operParam + ", status="
+				+ status + ", errorMsg=" + errorMsg + ", operTime=" + operTime + "]";
+	}
+
 }

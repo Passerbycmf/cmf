@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="white-bg">
+    <div class="wrapper wrapper-content animated fadeInRight ibox-content">
+        <form class="form-horizontal m" id="form-userOnline-edit" th:object="${userOnline}">
+            <input id="sessionId" name="sessionId" th:field="*{sessionId}"  type="hidden">
+            <div class="form-group">	
+                <label class="col-sm-3 control-label">登录账号：</label>
+                <div class="col-sm-8">
+                    <input id="loginName" name="loginName" th:field="*{loginName}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">	
+                <label class="col-sm-3 control-label">部门名称：</label>
+                <div class="col-sm-8">
+                    <input id="deptName" name="deptName" th:field="*{deptName}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">	
+                <label class="col-sm-3 control-label">登录IP地址：</label>
+                <div class="col-sm-8">
+                    <input id="ipaddr" name="ipaddr" th:field="*{ipaddr}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">	
+                <label class="col-sm-3 control-label">登录地点：</label>
+                <div class="col-sm-8">
+                    <input id="loginLocation" name="loginLocation" th:field="*{loginLocation}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">	
+                <label class="col-sm-3 control-label">浏览器类型：</label>
+                <div class="col-sm-8">
+                    <input id="browser" name="browser" th:field="*{browser}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">	
+                <label class="col-sm-3 control-label">操作系统：</label>
+                <div class="col-sm-8">
+                    <input id="os" name="os" th:field="*{os}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">	
+                <label class="col-sm-3 control-label">在线状态on_line在线off_line离线：</label>
+                <div class="col-sm-8">
+                    <input id="status" name="status" th:field="*{status}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">	
+                <label class="col-sm-3 control-label">session创建时间：</label>
+                <div class="col-sm-8">
+                    <input id="startTimestsamp" name="startTimestsamp" th:field="*{startTimestsamp}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">	
+                <label class="col-sm-3 control-label">session最后访问时间：</label>
+                <div class="col-sm-8">
+                    <input id="lastAccessTime" name="lastAccessTime" th:field="*{lastAccessTime}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">	
+                <label class="col-sm-3 control-label">超时时间，单位为分钟：</label>
+                <div class="col-sm-8">
+                    <input id="expireTime" name="expireTime" th:field="*{expireTime}" class="form-control" type="text">
+                </div>
+            </div>
+			<div class="form-group">
+				<div class="form-control-static col-sm-offset-9">
+					<button type="submit" class="btn btn-primary">提交</button>
+					<button onclick="$.modal.close()" class="btn btn-danger" type="button">关闭</button>
+				</div>
+			</div>
+		</form>
+    </div>
+    <div th:include="include::footer"></div>
+    <script type="text/javascript">
+		var prefix = ctx + "monitor/userOnline"
+		$("#form-userOnline-edit").validate({
+			rules:{
+				xxxx:{
+					required:true,
+				},
+			},
+			submitHandler: function(form) {
+				$.operate.save(prefix + "/edit", $('#form-userOnline-edit').serialize());
+			}
+		});
+	</script>
+</body>
+</html>

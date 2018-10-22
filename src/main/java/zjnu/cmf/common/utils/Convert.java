@@ -305,9 +305,9 @@ public class Convert
      * @param
      * @return 结果
      */
-    public static Long[] toLongArray(String str)
+    public static Integer[] toLongArray(String str)
     {
-        return toLongArray(",", str);
+        return toIntArray(",", str);
     }
 
     /**

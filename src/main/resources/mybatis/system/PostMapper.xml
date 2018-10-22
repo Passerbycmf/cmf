@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="zjnu.cmf.project.system.mapper.PostMapper">
+    
+    <resultMap type="Post" id="PostResult">
+        <result property="postId"    column="post_id"    />
+        <result property="postCode"    column="post_code"    />
+        <result property="postName"    column="post_name"    />
+        <result property="postSort"    column="post_sort"    />
+        <result property="status"    column="status"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+	
+	<sql id="selectPostVo">
+        select post_id, post_code, post_name, post_sort, status, create_by, create_time, update_by, update_time, remark from sys_post
+    </sql>
+	
+    <select id="selectPostList" parameterType="Post" resultMap="PostResult">
+        <include refid="selectPostVo"/>
+        <where>  
+            <if test="postId != null and postId != ''"> and post_id = #{postId}</if>
+             <if test="postCode != null and postCode != ''"> and post_code = #{postCode}</if>
+             <if test="postName != null and postName != ''"> and post_name = #{postName}</if>
+             <if test="postSort != null and postSort != ''"> and post_sort = #{postSort}</if>
+             <if test="status != null and status != ''"> and status = #{status}</if>
+             <if test="createBy != null and createBy != ''"> and create_by = #{createBy}</if>
+             <if test="createTime != null and createTime != ''"> and create_time = #{createTime}</if>
+             <if test="updateBy != null and updateBy != ''"> and update_by = #{updateBy}</if>
+             <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime}</if>
+             <if test="remark != null and remark != ''"> and remark = #{remark}</if>
+         </where>
+    </select>
+    
+    <select id="selectPostById" parameterType="Integer" resultMap="PostResult">
+        <include refid="selectPostVo"/>
+        where post_id = #{postId}
+    </select>
+    <select id="checkPostNameUnique" parameterType="String" resultMap="PostResult">
+        <include refid="selectPostVo"/>
+        where post_name=#{postName}
+    </select>
+
+    <insert id="insertPost" parameterType="Post">
+        insert into sys_post
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="postId != null and postId != '' ">post_id,</if>
+			<if test="postCode != null and postCode != '' ">post_code,</if>
+			<if test="postName != null and postName != '' ">post_name,</if>
+			<if test="postSort != null and postSort != '' ">post_sort,</if>
+			<if test="status != null and status != '' ">status,</if>
+			<if test="createBy != null and createBy != '' ">create_by,</if>
+			<if test="createTime != null and createTime != '' ">create_time,</if>
+			<if test="updateBy != null and updateBy != '' ">update_by,</if>
+			<if test="updateTime != null and updateTime != '' ">update_time,</if>
+			<if test="remark != null and remark != '' ">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="postId != null and postId != ''">#{postId},</if>
+			<if test="postCode != null and postCode != ''">#{postCode},</if>
+			<if test="postName != null and postName != ''">#{postName},</if>
+			<if test="postSort != null and postSort != ''">#{postSort},</if>
+			<if test="status != null and status != ''">#{status},</if>
+			<if test="createBy != null and createBy != ''">#{createBy},</if>
+			<if test="createTime != null and createTime != ''">#{createTime},</if>
+			<if test="updateBy != null and updateBy != ''">#{updateBy},</if>
+			<if test="updateTime != null and updateTime != ''">#{updateTime},</if>
+			<if test="remark != null and remark != ''">#{remark},</if>
+         </trim>
+    </insert>
+	 
+    <update id="updatePost" parameterType="Post">
+        update sys_post
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="postCode != null  and postCode != ''  ">post_code = #{postCode},</if>
+            <if test="postName != null  and postName != ''  ">post_name = #{postName},</if>
+            <if test="postSort != null  ">post_sort = #{postSort},</if>
+            <if test="status != null  and status != ''  ">status = #{status},</if>
+            <if test="createBy != null  and createBy != ''  ">create_by = #{createBy},</if>
+            <if test="createTime != null  ">create_time = #{createTime},</if>
+            <if test="updateBy != null  and updateBy != ''  ">update_by = #{updateBy},</if>
+            <if test="updateTime != null  ">update_time = #{updateTime},</if>
+            <if test="remark != null  and remark != ''  ">remark = #{remark},</if>
+        </trim>
+        where post_id = #{postId}
+    </update>
+    <select id="checkPostCodeUnique" parameterType="String" resultMap="PostResult">
+        <include refid="selectPostVo"/>
+        where post_code=#{postCode}
+    </select>
+    <select id="selectPostAll" resultMap="PostResult">
+        <include refid="selectPostVo"/>
+    </select>
+    <select id="selectPostsByUserId" parameterType="Integer" resultMap="PostResult">
+		SELECT p.post_id, p.post_name, p.post_code
+		FROM sys_user u
+			 LEFT JOIN sys_user_post up ON u.user_id = up.user_id
+			 LEFT JOIN sys_post p ON up.post_id = p.post_id
+		WHERE up.user_id = #{userId}
+	</select>
+
+    <delete id="deletePostById" parameterType="Integer">
+        delete from sys_post where post_id = #{postId}
+    </delete>
+	
+    <delete id="deletePostByIds" parameterType="String">
+        delete from sys_post where post_id in 
+        <foreach item="postId" collection="array" open="(" separator="," close=")">
+            #{postId}
+        </foreach>
+    </delete>
+    
+</mapper>

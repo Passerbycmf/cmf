@@ -64,6 +64,14 @@ public class UserConstants
     public final static String DICT_TYPE_UNIQUE = "0";
     public final static String DICT_TYPE_NOT_UNIQUE = "1";
 
+    /** 岗位名称是否唯一的返回结果码 */
+    public final static String POST_NAME_UNIQUE = "0";
+    public final static String POST_NAME_NOT_UNIQUE = "1";
+
+    /** 岗位编码是否唯一的返回结果码 */
+    public final static String POST_CODE_UNIQUE = "0";
+    public final static String POST_CODE_NOT_UNIQUE = "1";
+
     /**字典名称是否唯一返回结果码*/
     public final  static String DICT_NAME_UNIQUE = "0";
     public final static String DICT_NAME_NOT_UNIQUE ="1";

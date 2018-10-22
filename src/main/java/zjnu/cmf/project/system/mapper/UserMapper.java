@@ -52,13 +52,60 @@ public interface UserMapper
      * @return 结果
      */
 	public int deleteUserById(Integer userId);
-	
+
 	/**
-     * 批量删除用户
-     * 
-     * @param userIds 需要删除的数据ID
-     * @return 结果
-     */
-	public int deleteUserByIds(String[] userIds);
-	
+	 * 批量删除用户信息
+	 *
+	 * @param ids 需要删除的数据ID
+	 * @return 结果
+	 */
+	public int deleteUserByIds(Integer[] ids);
+
+	/**
+	 * 校验用户名称是否唯一
+	 * @param loginName 登录名称
+	 * @return 结果
+	 */
+    int checkLoginNameUnique(String loginName);
+
+	/**
+	 * 校验手机号码是否唯一
+	 * @param phonenumber 手机号码
+	 * @return
+	 */
+	User checkPhoneUnique(String phonenumber);
+
+	/**
+	 * 校验email是否唯一
+	 * @param email 用户邮箱
+	 * @return 结果
+	 */
+	User checkEmailUnique(String email);
+
+	/**
+	 * 通过用户名查询用户
+	 *
+	 * @param userName 用户名
+	 * @return 用户对象信息
+	 */
+	 User selectUserByLoginName(String userName);
+
+	/**
+	 * 通过手机号码查询用户
+	 *
+	 * @param phoneNumber 手机号码
+	 * @return 用户对象信息
+	 */
+	 User selectUserByPhoneNumber(String phoneNumber);
+
+	/**
+	 * 通过邮箱查询用户
+	 *
+	 * @param email 邮箱
+	 * @return 用户对象信息
+	 */
+	 User selectUserByEmail(String email);
+
+
+
 }

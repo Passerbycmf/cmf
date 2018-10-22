@@ -5,7 +5,9 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import zjnu.cmf.common.utils.ShiroUtils;
 import zjnu.cmf.common.utils.StringUtils;
+import zjnu.cmf.project.system.bean.User;
 
 
 import java.text.SimpleDateFormat;
@@ -117,7 +119,7 @@ public class BaseController
         return StringUtils.format("redirect:{}", url);
     }
 
-    /*public User getUser()
+    public User getUser()
     {
         return ShiroUtils.getUser();
     }
@@ -127,7 +129,7 @@ public class BaseController
         ShiroUtils.setUser(user);
     }
 
-    public Long getUserId()
+    public Integer getUserId()
     {
         return getUser().getUserId();
     }
@@ -135,5 +137,5 @@ public class BaseController
     public String getLoginName()
     {
         return getUser().getLoginName();
-    }*/
+    }
 }

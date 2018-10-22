@@ -25,7 +25,7 @@ import zjnu.cmf.framework.web.BaseController;
  * @date 2018-10-09
  */
 @Controller
-@RequestMapping("/monitor/operLog")
+@RequestMapping("/monitor/operlog")
 public class OperLogController extends BaseController
 {
     private String prefix = "monitor/operLog";
@@ -33,7 +33,7 @@ public class OperLogController extends BaseController
 	@Autowired
 	private IOperLogService operLogService;
 	
-	@RequiresPermissions("monitor:operLog:view")
+	@RequiresPermissions("monitor:operlog:view")
 	@GetMapping()
 	public String operLog()
 	{
@@ -43,7 +43,7 @@ public class OperLogController extends BaseController
 	/**
 	 * 查询操作日志记录列表
 	 */
-	@RequiresPermissions("monitor:operLog:list")
+	@RequiresPermissions("monitor:operlog:list")
 	@PostMapping("/list")
 	@ResponseBody
 	public TableDataInfo list(OperLog operLog)
@@ -65,7 +65,7 @@ public class OperLogController extends BaseController
 	/**
 	 * 新增保存操作日志记录
 	 */
-	@RequiresPermissions("monitor:operLog:add")
+	@RequiresPermissions("monitor:operlog:add")
 	@Log(title = "操作日志记录", action = BusinessType.INSERT)
 	@PostMapping("/add")
 	@ResponseBody
@@ -88,7 +88,7 @@ public class OperLogController extends BaseController
 	/**
 	 * 修改保存操作日志记录
 	 */
-	@RequiresPermissions("monitor:operLog:edit")
+	@RequiresPermissions("monitor:operlog:edit")
 	@Log(title = "操作日志记录", action = BusinessType.UPDATE)
 	@PostMapping("/edit")
 	@ResponseBody
@@ -100,7 +100,7 @@ public class OperLogController extends BaseController
 	/**
 	 * 删除操作日志记录
 	 */
-	@RequiresPermissions("monitor:operLog:remove")
+	@RequiresPermissions("monitor:operlog:remove")
 	@Log(title = "操作日志记录", action = BusinessType.DELETE)
 	@PostMapping( "/remove")
 	@ResponseBody

@@ -43,7 +43,7 @@ public class DeptController extends BaseController
 	@Autowired
 	private DeptMapper deptMapper;
 	
-	@RequiresPermissions("system:dept:view")
+
 	@GetMapping()
 	public String dept(ModelMap modelMap)
 	{
@@ -54,14 +54,12 @@ public class DeptController extends BaseController
 	/**
 	 * 查询部门列表
 	 */
-	@RequiresPermissions("system:dept:list")
+
 	@GetMapping("/list")
 	@ResponseBody
 	public List<Dept> list(Dept dept)
 	{
-		/*startPage();
-        List<Dept> list = deptService.selectDeptList(dept);
-		return getDataTable(list);*/
+
 		List<Dept> deptList = deptService.selectDeptList(dept);
 		return deptList;
 	}
@@ -81,7 +79,7 @@ public class DeptController extends BaseController
 	/**
 	 * 新增保存部门
 	 */
-	@RequiresPermissions("system:dept:add")
+
 	@Log(title = "部门", action = BusinessType.INSERT)
 	@PostMapping("/add")
 	@ResponseBody
@@ -105,7 +103,7 @@ public class DeptController extends BaseController
 	/**
 	 * 保存修改部门
 	 */
-	@RequiresPermissions("system:dept:edit")
+
 	@Log(title = "部门", action = BusinessType.UPDATE)
 	@PostMapping("/edit")
 	@ResponseBody
@@ -117,7 +115,7 @@ public class DeptController extends BaseController
 	/**
 	 * 删除部门
 	 */
-	@RequiresPermissions("system:dept:remove")
+
 	@Log(title = "部门", action = BusinessType.DELETE)
 	@PostMapping( "/remove/{deptId}")
 	@ResponseBody
@@ -133,14 +131,12 @@ public class DeptController extends BaseController
 	}
 
 	/**
-	 * 选择部门树（回显部门）
-	 * @param deptId
-	 * @param map
-	 * @return
+	 * 选择部门树(回显部门)
 	 */
 	@GetMapping("/selectDeptTree/{deptId}")
-	public String selectDeptTree(@PathVariable("deptId") Integer deptId, ModelMap map){
-		map.put("treeName",deptService.selectDeptById(deptId).getDeptName());
+	public String selectDeptTree(@PathVariable("deptId") Integer deptId, ModelMap mmap)
+	{
+		mmap.put("treeName", deptService.selectDeptById(deptId).getDeptName());
 		return prefix + "/tree";
 	}
 

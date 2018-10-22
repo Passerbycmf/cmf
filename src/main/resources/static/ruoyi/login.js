@@ -15,8 +15,8 @@ $.validator.setDefaults({
 });
 
 function login() {
-	$.modal.loading($("#btnSubmit").data("loading"));
-	var username = $.common.trim($("input[name='username']").val());
+    $.modal.loading($("#btnSubmit").data("loading"));
+    var username = $.common.trim($("input[name='username']").val());
     var password = $.common.trim($("input[name='password']").val());
     var validateCode = $("input[name='validateCode']").val();
     var rememberMe = $("input[name='rememberme']").is(':checked');
@@ -33,9 +33,9 @@ function login() {
             if (r.code == 0) {
                 location.href = ctx + 'index';
             } else {
-            	$.modal.closeLoading();
-            	$('.imgcode').click();
-            	$.modal.msg(r.msg);
+                $.modal.closeLoading();
+                $('.imgcode').click();
+                $.modal.msg(r.msg);
             }
         }
     });

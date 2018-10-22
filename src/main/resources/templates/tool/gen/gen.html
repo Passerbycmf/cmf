@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <meta charset="utf-8">
-<body class="gray-bg">
 <head th:include="include :: header"></head>
+<body class="gray-bg">
+
 <div class="container-div">
     <div class="row">
         <div class="col-sm-12 select-info">
@@ -30,7 +31,7 @@
         </div>
 
         <div class="btn-group hidden-xs" id="toolbar" role="group">
-            <a class="btn btn-outline btn-success btn-rounded" onclick="javascript:batchGenCode()">
+            <a class="btn btn-outline btn-success btn-rounded" onclick="javascript:batchGenCode()" shiro:hasPermission="tool:gen:code" >
                 <i class="fa fa-download"></i> 批量生成
             </a>
         </div>
@@ -42,18 +43,17 @@
 </div>
 <div th:include="include :: footer"></div>
 <script type="text/javascript">
+    var prefix = ctx + "tool/gen"
 
-    var prefix=ctx+"tool/gen"
-    $(function () {
-        var options={
-            url: prefix+"/list",
+    $(function() {
+        var options = {
+            url: prefix + "/list",
             sortName: "createTime",
             sortOrder: "desc",
-            search :false,
-            columns: [
-                {
-                    checkbox: true
-                },
+            search: false,
+            columns: [{
+                checkbox: true
+            },
                 {
                     field: 'tableName',
                     title: '表名称',
@@ -82,8 +82,8 @@
                     title: '操作',
                     width: '20%',
                     align: 'center',
-                    formatter: function (value, row, index) {
-                        var msg='<a class="btn btn-primary btn-xs" href="#" onclick="genCode(\''+row.tableName+ '\')"><i class="fa fa-bug"></i>生成代碼</a>'
+                    formatter: function(value, row, index) {
+                        var msg = '<a class="btn btn-primary btn-xs" href="#" onclick="genCode(\'' + row.tableName + '\')"><i class="fa fa-bug"></i>生成代码</a> ';
                         return msg;
                     }
                 }]

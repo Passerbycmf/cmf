@@ -67,7 +67,7 @@
 		<logger name="org.springframework.jdbc" level="debug" />
 	-->
 
-	<logger name="com.ruoyi" level="info" />
+	<logger name="zjnu.cmf" level="info" />
 
 	<root level="info">
 		<appender-ref ref="console" />
